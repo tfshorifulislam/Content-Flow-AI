@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Sidebar from "@/components/shared/Sidebar";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const inter = Inter({
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -55,8 +56,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={cn("h-full", "antialiased", inter.className, "font-sans", geist.variable)}
     >
-      <body className="min-h-full flex flex-col">
-        {children}
+      <body className="flex max-w-7xl mx-auto">
+        <div>
+          <Sidebar />
+        </div>
+        <main className="flex-1">
+          {children}
+        </main>
       </body>
     </html>
   );
