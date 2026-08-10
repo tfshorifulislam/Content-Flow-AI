@@ -9,7 +9,11 @@ export function SearchInput() {
                 className="w-64 rounded-sm bg-[#EBEFEC]"
                 type="search"
                 placeholder="Search..." />
-            <Button className='cursor-pointer bg-[#00695C] hover:bg-[#00695de8]'>Search</Button>
+            <Button
+                className='cursor-pointer bg-[#00695C] hover:bg-[#00695de8] rounded-sm'>
+                Search
+
+            </Button>
         </Field>
     )
 }
