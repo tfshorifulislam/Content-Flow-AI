@@ -110,7 +110,7 @@ const AIgeneration = () => {
 
                 {/* Action Button */}
                 <div className="pt-2">
-                    <Button className="w-full bg-[#003840] hover:bg-[#002B31] text-white h-12 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
+                    <Button className="w-full cursor-pointer bg-[#00695C] hover:bg-[#00695de8] text-white h-12 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
                         <Sparkles className="w-4 h-4" />
                         Generate Content with AI
                     </Button>
