@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ContentFlowAI 🚀
 
-## Getting Started
+**ContentFlowAI** is an AI-powered content generation and workflow automation platform designed to streamline your content creation pipeline. From generating SEO-optimized blog posts to scheduling social media content, ContentFlowAI helps creators and teams produce high-quality copy effortlessly.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
+## ✨ Features
+
+- **⚡ AI Content Generation:** Create blog posts, marketing copy, and social media captions in seconds.
+- **🔄 Workflow Automation:** Streamline your content approval, editing, and publishing processes.
+- **🎯 SEO Optimization:** Built-in tools to optimize headlines, meta tags, and keywords.
+- **🎨 Custom Templates:** Ready-to-use templates for various content formats.
+- **🔐 Secure Authentication:** Seamless user login and access control.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **AI Integration:** OpenAI API / Gemini API
+- **Deployment:** [Vercel](https://vercel.com/)
+
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to get a local copy up and running on your machine.
+
+### Prerequisites
+
+Make sure you have Node.js (v18 or higher) installed.
+
+- **Node.js:** `node -v`
+- **npm** or **pnpm** or **yarn**
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/contentflow-ai.git](https://github.com/your-username/contentflow-ai.git)
+   cd contentflow-ai
+
+   npm install
 # or
-yarn dev
+pnpm install
+# or
+yarn install
+
+
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+OPENAI_API_KEY=your_openai_api_key_here
+
+
+npm run dev
 # or
 pnpm dev
 # or
-bun dev
-```
+yarn dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+├── app/                  # Next.js App Router (pages and layouts)
+│   ├── api/              # API routes
+│   ├── layout.tsx        # Root layout with metadata
+│   └── page.tsx          # Homepage
+├── components/           # Reusable UI components
+├── lib/                  # Utility functions and helper scripts
+├── public/               # Static assets (images, icons)
+└── styles/               # Global styles
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📄 License
+Distributed under the MIT License. See LICENSE for more information.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🤝 Contributing
+Contributions are welcome! Feel free to open issues or submit pull requests to make ContentFlowAI even better.
