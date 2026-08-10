@@ -39,7 +39,7 @@ Make sure you have Node.js (v18 or higher) installed.
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/your-username/contentflow-ai.git](https://github.com/your-username/contentflow-ai.git)
+   git clone https://github.com/tfshorifulislam/Content-Flow-AI.git
    cd contentflow-ai
 
    npm install
@@ -58,15 +58,6 @@ npm run dev
 pnpm dev
 # or
 yarn dev
-
-├── app/                  # Next.js App Router (pages and layouts)
-│   ├── api/              # API routes
-│   ├── layout.tsx        # Root layout with metadata
-│   └── page.tsx          # Homepage
-├── components/           # Reusable UI components
-├── lib/                  # Utility functions and helper scripts
-├── public/               # Static assets (images, icons)
-└── styles/               # Global styles
 
 📄 License
 Distributed under the MIT License. See LICENSE for more information.
