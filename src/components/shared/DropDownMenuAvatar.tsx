@@ -26,18 +26,18 @@ import { startTransition } from "react"
 export function DropdownMenuAvatar() {
 
   const handleLogout = () => {
-        startTransition(async () => {
-            await logoutUser();
-        });
-        alert('logout successfully done!')
-    };
+    startTransition(async () => {
+      await logoutUser();
+      alert('logout successfully done!')
+    });
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="rounded-full"><Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-          <AvatarFallback>LR</AvatarFallback>
-        </Avatar></Button>} />
+        <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+        <AvatarFallback>LR</AvatarFallback>
+      </Avatar></Button>} />
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem>
