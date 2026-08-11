@@ -1,3 +1,4 @@
+import AICreditsCard from "@/components/shared/AiCreadits";
 import AIgeneration from "@/components/shared/AIgeneration";
 
 const Homepage = () => {
@@ -14,10 +15,14 @@ const Homepage = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-6">
+      <div className="grid grid-cols-6 gap-6">
 
         <div className="col-span-4">
           <AIgeneration />
+        </div>
+
+        <div className="col-span-2">
+          <AICreditsCard />
         </div>
 
       </div>
