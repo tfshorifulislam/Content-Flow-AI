@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { Sparkles, Eye, EyeOff, ArrowRight, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { registerUser } from "@/lib/actions/auth";
 
 interface SignUpInputs {
     fullName: string;
@@ -15,6 +17,10 @@ interface SignUpInputs {
 
 export default function SignUpPage() {
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const router = useRouter();
 
     const {
         register,
@@ -22,8 +28,41 @@ export default function SignUpPage() {
         formState: { errors },
     } = useForm<SignUpInputs>();
 
-    const onSubmitData = (data: SignUpInputs) => {
-        console.log("Form Submitted:", data);
+    const onSubmitData = async (data: SignUpInputs) => {
+
+        setLoading(true);
+        setErrorMessage("");
+
+        console.log("1. onSubmitData started...");
+
+        try {
+            const userInfo = {
+                name: data.fullName,
+                email: data.email,
+                password: data.password
+            }
+
+            console.log("2. Calling registerUser Action with:", userInfo);
+
+            const result = await registerUser(userInfo)
+
+            console.log("3. Result from Server Action:", result);
+
+            if (result.success) {
+                alert('Account created successfully!');
+                router.push('/')
+            } else {
+                console.log("4. Registration failed message:", result?.message);
+                setErrorMessage(result.message || 'Failed to create account');
+            }
+        } catch (error) {
+            console.error("5. Catch Error in Client:", error);
+            setErrorMessage("Something went wrong! Please check server connectivity.");
+        }
+        finally {
+            setLoading(false);
+        }
+
     };
 
     return (
@@ -157,10 +196,20 @@ export default function SignUpPage() {
                     {/* Submit Button */}
                     <Button
                         type="submit"
-                        className="w-full cursor-pointer bg-[#00695C] hover:bg-[#004F45] text-white h-11 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 mt-2 transition-all"
+                        disabled={loading}
+                        className="w-full cursor-pointer bg-[#00695C] hover:bg-[#004F45] text-white h-11 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 mt-2 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                        Create Account
-                        <ArrowRight className="w-4 h-4" />
+                        {loading ? (
+                            <>
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                                Creating Account...
+                            </>
+                        ) : (
+                            <>
+                                Create Account
+                                <ArrowRight className="w-4 h-4" />
+                            </>
+                        )}
                     </Button>
                 </form>
 

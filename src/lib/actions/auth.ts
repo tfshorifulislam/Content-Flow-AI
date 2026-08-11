@@ -1,0 +1,43 @@
+'use server';
+
+import { cookies } from "next/headers";
+
+interface UserInfo {
+    name: string;
+    email: string;
+    password: string;
+}
+
+export const registerUser = async (userInfo: UserInfo) => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URI}/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userInfo),
+            cache: 'no-store',
+        });
+
+        const result = await res.json();
+
+        if (result.success && result.token) {
+            const cookieStore = await cookies();
+            cookieStore.set('token', result.token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                path: '/'
+            });
+        }
+
+        return result;
+    } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Something went wrong';
+        return {
+            success: false,
+            message: 'Failed to create user',
+            error: errorMessage,
+        };
+    }
+}
