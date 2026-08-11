@@ -1,6 +1,7 @@
 'use server';
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 interface UserInfo {
     name: string;
@@ -41,3 +42,12 @@ export const registerUser = async (userInfo: UserInfo) => {
         };
     }
 }
+
+
+
+// user logout system
+export const logoutUser = async () => {
+    const cookieStore = await cookies();
+    cookieStore.delete('token');
+    redirect('/');
+};

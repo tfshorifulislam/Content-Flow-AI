@@ -1,7 +1,6 @@
 "use client"
 
 import {
-  BadgeCheckIcon,
   BellIcon,
   CreditCardIcon,
   LogOutIcon,
@@ -21,8 +20,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { logoutUser } from "@/lib/actions/auth"
+import { startTransition } from "react"
 
 export function DropdownMenuAvatar() {
+
+  const handleLogout = () => {
+        startTransition(async () => {
+            await logoutUser();
+        });
+        alert('logout successfully done!')
+    };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="rounded-full"><Avatar>
@@ -41,7 +50,7 @@ export function DropdownMenuAvatar() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}>
           <LogOutIcon />
           Sign Out
         </DropdownMenuItem>
