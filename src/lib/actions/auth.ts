@@ -109,7 +109,7 @@ export async function getCurrentUser() {
 
         const payload = decodeJwt(token) as {
             id?: string;
-            userId?: string; // এটি যোগ করুন
+            userId?: string;
             email?: string;
             name?: string;
             userImage?: string;
