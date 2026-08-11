@@ -1,5 +1,6 @@
 'use server';
 
+import { decodeJwt, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -95,3 +96,37 @@ export const loginUser = async (credentials: LoginInputs) => {
         };
     }
 };
+
+
+
+//get  current user
+export async function getCurrentUser() {
+    try {
+        const cookieStore = await cookies();
+        const token = cookieStore.get("token")?.value;
+
+        if (!token) return null;
+
+        const payload = decodeJwt(token) as {
+            id?: string;
+            userId?: string; // এটি যোগ করুন
+            email?: string;
+            name?: string;
+            userImage?: string;
+        };
+
+        const userId = payload.id || payload.userId;
+
+        if (!payload || !userId) return null;
+
+        return {
+            id: userId,
+            email: payload.email || "",
+            name: payload.name || "",
+            userImage: payload.userImage || null,
+        };
+    } catch (error) {
+        console.error("Failed to decode token:", error);
+        return null;
+    }
+}
