@@ -1,5 +1,6 @@
 import AICreditsCard from "@/components/shared/AiCreadits";
 import AIgeneration from "@/components/shared/AIgeneration";
+import { RecentDraftsTable } from "@/components/shared/RecentDraft";
 import { Flame, PartyPopper } from "lucide-react";
 
 const Homepage = () => {
@@ -17,7 +18,7 @@ const Homepage = () => {
 
       {/* Main Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 items-start">
-        
+
         {/* Left Column: Main Form */}
         <div className="lg:col-span-4 h-full">
           <AIgeneration />
@@ -32,7 +33,7 @@ const Homepage = () => {
 
           {/* Stats Cards Grid */}
           <div className="grid grid-cols-2 gap-4 w-full">
-            
+
             {/* Streak Card */}
             <div className="bg-white border border-[#E0E3E1] rounded-2xl p-5 flex flex-col items-center justify-center shadow-xs hover:border-[#703321]/30 transition-colors">
               <div className="w-10 h-10 rounded-full bg-[#FFF2EE] flex items-center justify-center text-[#703321] mb-3">
@@ -62,6 +63,10 @@ const Homepage = () => {
           </div>
         </div>
 
+      </div>
+
+      <div>
+        <RecentDraftsTable />
       </div>
     </div>
   );
